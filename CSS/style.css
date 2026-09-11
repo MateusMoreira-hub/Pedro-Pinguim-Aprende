@@ -1,0 +1,60 @@
+h1{
+font-family: "Ranchers", cursive;
+text-align: center;
+color: #140348de;
+}
+
+p{
+font-family: "Ranchers", cursive;
+text-align: center;
+color: #190f37de;
+font-size: 20px;
+}
+
+/* Container que junta a caixa e o pinguim no mesmo espaço */
+.container {
+  position: relative; /* Serve de ponto de referência para o pinguim */
+  width: 300px;
+  margin: 50px auto;  /* Centraliza o bloco na página */
+}
+
+/* Caixa do Título (DEVE ficar na frente) */
+.cubotitle {
+  position: relative; /* Necessário para ativar o z-index */
+  z-index: 10;        /* Valor alto garante que fica NA FRENTE */
+  width: 300px;
+  height: 75px;
+  background-color: #4e72de96; /* Cor azul semitransparente */
+  border-radius: 20px;
+  border: 2px solid #1d4bd4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top:60px;
+}
+
+.cubotxt{
+margin:auto;
+margin-top: 100px;
+width: 300px;
+height: 150px;
+background-color: #4e72de96; /* Cor azul semitransparente */
+border-radius: 20px;
+border: 2px solid #1d4bd4;
+}
+
+/* Imagem do Pinguim (DEVE ficar atrás) */
+.pedro {
+  position: absolute; /* Solta a imagem para flutuar no container */
+  z-index: 1;         /* Valor menor garante que fica ATRÁS */
+  width: 150px;       /* Largura do pinguim */
+  height: auto;
+  
+  /* Posição exata do pinguim em relação ao container */
+  top: -40px;         /* Move o pinguim para cima, saindo de trás do topo da caixa */
+  left: 65px;         /* Alinha o pinguim no canto esquerdo da caixa */
+}
+
+body{
+    background-image: url("/IMAGE/Fundo.png")
+}
