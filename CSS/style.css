@@ -82,12 +82,12 @@ border-radius: 20px 20px 0px 0px;
 background-color: #becaed59; 
 font-family: "Ranchers", cursive;
 font-size: 28px;
-color: #cec7e3de;
+color: #f2f0f9de;
 text-shadow: 2px 2px 2px #1c1c1ce4;
 }
 
 button:hover{
-  font-size:28px;
+  font-size:29px;
   cursor: grab;
   color: rgba(87, 235, 255, 0.32);
 }
