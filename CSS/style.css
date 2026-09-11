@@ -1,31 +1,39 @@
 h1{
 font-family: "Ranchers", cursive;
 text-align: center;
-color: #140348de;
+color: #fefdffde;
+font-size:27px;
+text-shadow: 2px 2px 2px #07072b7a;
+}
+
+h1:hover{
+  font-size:28px;
+  cursor: grab;
+  color: rgba(87, 235, 255, 0.32);
 }
 
 p{
 font-family: "Ranchers", cursive;
 text-align: center;
-color: #190f37de;
+color: #f8f5ffde;
 font-size: 20px;
 }
 
-/* Container que junta a caixa e o pinguim no mesmo espaço */
+
 .container {
-  position: relative; /* Serve de ponto de referência para o pinguim */
+  position: relative; 
   width: 300px;
-  margin: 50px auto;  /* Centraliza o bloco na página */
+  margin: 50px auto;  
 }
 
-/* Caixa do Título (DEVE ficar na frente) */
+
 .cubotitle {
-  position: relative; /* Necessário para ativar o z-index */
-  z-index: 10;        /* Valor alto garante que fica NA FRENTE */
+  position: relative; 
+  z-index: 10;       
   width: 300px;
   height: 75px;
-  background-color: #4e72de96; /* Cor azul semitransparente */
-  border-radius: 20px;
+  background-color: #4e72de96; 
+  border-radius: 20px 20px 0px 0px;
   border: 2px solid #1d4bd4;
   display: flex;
   align-items: center;
@@ -37,22 +45,51 @@ font-size: 20px;
 margin:auto;
 margin-top: 100px;
 width: 300px;
-height: 150px;
-background-color: #4e72de96; /* Cor azul semitransparente */
-border-radius: 20px;
+height: 300px;
+background-color: #4e72de96; 
+border-radius: 20px 20px 0px 0px;
 border: 2px solid #1d4bd4;
+text-shadow: 2px 2px 2px #07072b7a;
 }
 
-/* Imagem do Pinguim (DEVE ficar atrás) */
+
 .pedro {
-  position: absolute; /* Solta a imagem para flutuar no container */
-  z-index: 1;         /* Valor menor garante que fica ATRÁS */
-  width: 150px;       /* Largura do pinguim */
+  position: absolute;
+  z-index: 1;         
+  width: 150px;      
   height: auto;
-  
-  /* Posição exata do pinguim em relação ao container */
-  top: -40px;         /* Move o pinguim para cima, saindo de trás do topo da caixa */
-  left: 65px;         /* Alinha o pinguim no canto esquerdo da caixa */
+  top: -40px;         
+  left: 65px;        
+}
+
+.ptlogo{
+  width: 60px;
+  height: 60px;
+margin: auto;
+}
+
+.matlogo{
+  width: 60px;
+  height: 60px;
+  margin:auto;
+}
+
+button{
+margin:auto;
+width: 140px;
+height: 60px;
+border-radius: 20px 20px 0px 0px;
+background-color: #becaed59; 
+font-family: "Ranchers", cursive;
+font-size: 28px;
+color: #cec7e3de;
+text-shadow: 2px 2px 2px #1c1c1ce4;
+}
+
+button:hover{
+  font-size:28px;
+  cursor: grab;
+  color: rgba(87, 235, 255, 0.32);
 }
 
 body{
