@@ -1,22 +1,22 @@
 h1{
-font-family: "Ranchers", cursive;
+font-family: "Bangers", cursive;
 text-align: center;
-color: #fefdffde;
-font-size:27px;
-text-shadow: 2px 2px 2px #07072b7a;
+color: #fefdff;
+font-size:35px;
+text-shadow: 2px 4px 2px #03036de1;
 }
 
 h1:hover{
-  font-size:28px;
+  font-size:37px;
   cursor: grab;
   color: rgba(87, 235, 255, 0.32);
 }
 
 p{
-font-family: "Ranchers", cursive;
+font-family: "Bangers", cursive;
 text-align: center;
 color: #f8f5ffde;
-font-size: 20px;
+font-size: 28px;
 }
 
 
@@ -92,6 +92,30 @@ button:hover{
   color: rgba(87, 235, 255, 0.32);
 }
 
+
+.material-symbols-outlined:hover{
+cursor: grab;
+
+}
+
 body{
-    background-image: url("/IMAGE/Fundo.png")
+    background-image: url("/IMAGE/Fundo.png");
+    animation: fundo 25s linear infinite;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image: url("/IMAGE/Fundo.png");
+    animation: fundo 15s linear infinite;
+  }
+}
+
+
+@keyframes fundo{
+  0%{
+    background-position: 0 0;
+  }
+  100%{
+    background-position: 100% -100%;  
+}
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Ranchers&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=settings" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Pedro Pinguim Aprende 🐧​📝​</title>
+</head>
+<body>
+<div class="container">
+      <img src="/IMAGE/Pedro.png" alt="Pedro Pinguim" class="pedro">
+<div class="cubotitle" onclick="window.location.href='/index.html'">
+        <p>
+            <h1>PEDRO PINGUIM APRENDE</h1>
+        </p>
+    </div>
+</div>
+  <div class="cubotxt" style="padding-bottom: 20px; height: 350px;">
+        <p style="font-size: 30px; background-color: rgb(54, 69, 228,0.5);">​​⚙️CONFIGURAÇÕES​​⚙️</p>
+    
+        <p><button style="width: 225px;background-color: rgb(50, 125, 255);" id="musica" onclick="opmusica()">🎵​MÚSICA🔊</button></p>
+
+        <p><button style="width: 225px;background-color: rgb(50, 125, 255);" id="op2" onclick="op2()">FORTNITE</button></p>
+
+        <p><button style="width: 225px;background-color: rgb(50, 125, 255);" id="op3" onclick="op3()">GACHA</button></p>
+        
+
+
+
+<!--Versão base sem as funcionalidades-->
+</div>
+<script>
+musica = document.querySelector("#musica");
+
+function opmusica(){
+    if(musica.style.backgroundColor == "rgb(50, 125, 255)"){
+        musica.style.backgroundColor = "rgba(61, 93, 149, 0.4)";
+        musica.innerHTML="❌​​MÚSICA🔇";
+    } else {
+        musica.style.backgroundColor = "rgb(50, 125, 255)"; 
+        musica.innerHTML="🎵​MÚSICA🔊";
+    }
+}
+</script>
+</body>
+</html>
