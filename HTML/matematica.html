@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Ranchers&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <title>Matemática com Frutinhas! 🍎</title>
+    <style>
+        .cubotxt-mat {
+            margin: auto;
+            margin-top: 100px;
+            margin-bottom: 30px;
+            width: 330px;
+            min-height: 420px;
+            height: auto;
+            padding-bottom: 20px;
+            background-color: #4e72de96;
+            border-radius: 20px 20px 0px 0px;
+            border: 2px solid #1d4bd4;
+            text-shadow: 2px 2px 2px #07072b7a;
+        }
+        .placar {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 5px 0;
+        }
+        .placar span {
+            font-family: "Ranchers", cursive;
+            font-size: 20px;
+            background-color: rgb(54, 69, 228, 0.5);
+            border-radius: 12px;
+            padding: 4px 12px;
+            color: #f8f5ffde;
+        }
+        .tipos {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+        .tipos button {
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+        }
+        .tipos button.ativo {
+            background-color: rgb(50, 125, 255);
+            border: 2px solid #fff;
+        }
+        .continha {
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 15px;
+            margin: 12px;
+            padding: 10px 5px;
+        }
+        .frutas-linha {
+            font-size: 28px;
+            line-height: 1.4;
+            letter-spacing: 2px;
+            word-break: break-word;
+        }
+        .sinal {
+            font-family: "Ranchers", cursive;
+            font-size: 36px;
+            color: #ffe45e;
+            text-shadow: 2px 2px 2px #1c1c1ce4;
+            margin: 2px 0;
+        }
+        .pergunta {
+            font-size: 30px !important;
+            background-color: rgb(54, 69, 228, 0.5);
+            margin: 10px 12px !important;
+            border-radius: 12px;
+            padding: 6px;
+        }
+        .opcoes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+        .opcoes button {
+            width: 90px;
+            height: 60px;
+            font-size: 32px;
+        }
+        .opcoes button.certo {
+            background-color: #37c837;
+        }
+        .opcoes button.errado {
+            background-color: #e05252;
+        }
+        #mensagem {
+            min-height: 34px;
+            font-size: 26px !important;
+            margin: 8px 12px !important;
+        }
+        .acoes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .acoes button {
+            width: 150px;
+            height: 55px;
+            font-size: 22px;
+        }
+        .dica {
+            font-size: 20px !important;
+            color: #dbe4ff !important;
+        }
+        #btnMusica {
+            width: 225px;
+            height: 55px;
+            font-size: 22px;
+            background-color: rgba(61, 93, 149, 0.4);
+        }
+        #btnMusica.ligada {
+            background-color: rgb(50, 125, 255);
+        }
+        #player-musica {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+      <img src="/IMAGE/Pedro.png" alt="Pedro Pinguim" class="pedro">
+    <div class="cubotitle" onclick="window.location.href='/index.html'">
+        <p>
+            <h1>PEDRO PINGUIM APRENDE</h1>
+        </p>
+    </div>
+</div>
+  <div class="cubotxt-mat">
+        <p style="font-size:23px; background-color: rgb(54, 69, 228,0.5); margin:12px; border-radius:12px; padding:6px;">➕ MATEMÁTICA COM FRUTINHAS 🍎</p>
+
+        <div class="placar">
+            <span id="pontos">⭐ 0 pontos</span>
+            <span id="sequencia">🔥 0 em seguida!</span>
+        </div>
+
+        <p class="dica">Escolha a continha, conte as frutinhas e toque na resposta!</p>
+
+        <p><button id="btnMusica" onclick="alternarMusica()">🎵 MÚSICA: OFF 🔇</button></p>
+        <div id="player-musica"></div>
+
+        <div class="tipos">
+            <button style="font-size: 18px;" id="btnSomar" class="ativo" onclick="escolherTipo('somar')">➕ SOMAR</button>
+            <button id="btnTirar" onclick="escolherTipo('tirar')">➖ TIRAR</button>
+            <button id="btnTudo" onclick="escolherTipo('tudo')">🎲 TUDO</button>
+        </div>
+
+        <div class="continha">
+            <div id="frutas1" class="frutas-linha">🍎🍎🍎</div>
+            <div id="sinal" class="sinal">+</div>
+            <div id="frutas2" class="frutas-linha">🍎🍎</div>
+        </div>
+
+        <p id="pergunta" class="pergunta">Quanto é 3 + 2?</p>
+
+        <div class="opcoes">
+            <button onclick="responder(this)">5</button>
+            <button onclick="responder(this)">4</button>
+            <button onclick="responder(this)">6</button>
+        </div>
+
+        <p id="mensagem">🐧 Pedro está torcendo por você!</p>
+
+        <div class="acoes">
+            <p><button onclick="falarPergunta()" style="width: 150px;">🔊 OUVIR 👂</button></p>
+            <p><button onclick="novaContinha()" style="width: 150px;">🎲 NOVA 🍓</button></p>
+        </div>
+        <p><button onclick="window.location.href='materia.html'" style="width: 225px;">⬅️ VOLTAR 📚</button></p>
+    </div>
+
+<script>
+    let tipo = 'somar';
+    let respostaCerta = 0;
+    let pontos = 0;
+    let sequencia = 0;
+    let travado = false;
+
+    const FRUTAS = ['🍎', '🍌', '🍊', '🍇', '🍓', '🍉', '🍒', '🍍'];
+    const ELOGIOS = [
+        '🎉 MUITO BEM! Você é demais!',
+        '🐧 UAU! O Pedro amou!',
+        '⭐ INCRÍVEL! Continua assim!',
+        '🍓 DELÍCIA! Você acertou!',
+        '🌈 PERFEITO! Estrela para você!'
+    ];
+    const TENTE = [
+        '🐧 Quase! Conte de novo com calminha!',
+        '🍌 Opa! Tente contar as frutinhas uma por uma!',
+        '💪 Você consegue! Olhe bem as frutinhas!'
+    ];
+
+    function numeroAleatorio(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function escolherTipo(novoTipo) {
+        tipo = novoTipo;
+        document.querySelectorAll('.tipos button').forEach(b => b.classList.remove('ativo'));
+        if (tipo === 'somar') document.querySelector('#btnSomar').classList.add('ativo');
+        if (tipo === 'tirar') document.querySelector('#btnTirar').classList.add('ativo');
+        if (tipo === 'tudo') document.querySelector('#btnTudo').classList.add('ativo');
+        novaContinha();
+    }
+
+    function embaralhar(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    function novaContinha() {
+        travado = false;
+        let operacao = tipo;
+        if (tipo === 'tudo') {
+            operacao = Math.random() < 0.5 ? 'somar' : 'tirar';
+        }
+
+        // Números pequenos para a pré-escola (1 a 5, soma até 10)
+        let n1 = numeroAleatorio(1, 5);
+        let n2 = numeroAleatorio(1, 5);
+
+        if (operacao === 'somar') {
+            // Garante soma máxima de 10
+            while (n1 + n2 > 10) {
+                n1 = numeroAleatorio(1, 5);
+                n2 = numeroAleatorio(1, 5);
+            }
+            respostaCerta = n1 + n2;
+            document.querySelector('#sinal').textContent = '+';
+        } else {
+            // Subtração sem resultado negativo: o maior fica em cima
+            if (n2 > n1) [n1, n2] = [n2, n1];
+            respostaCerta = n1 - n2;
+            document.querySelector('#sinal').textContent = '−';
+        }
+
+        const fruta = FRUTAS[numeroAleatorio(0, FRUTAS.length - 1)];
+        const nomeFruta = nomeDaFruta(fruta);
+
+        document.querySelector('#frutas1').textContent = fruta.repeat(n1);
+        document.querySelector('#frutas2').textContent = fruta.repeat(Math.max(n2, n2 === 0 ? 0 : n2));
+
+        const simbolo = document.querySelector('#sinal').textContent;
+        document.querySelector('#pergunta').textContent = `Quanto é ${n1} ${simbolo} ${n2}? (${n1} ${nomeFruta} ${simbolo === '+' ? 'mais' : 'menos'} ${n2})`;
+
+        // Guarda para o botão de ouvir
+        document.querySelector('#pergunta').dataset.texto = `Quanto é ${n1} ${simbolo === '+' ? 'mais' : 'menos'} ${n2}? Conte as frutinhas!`;
+
+        // Monta 3 opções: a certa + 2 erradas próximas
+        let opcoes = new Set([respostaCerta]);
+        while (opcoes.size < 3) {
+            let palpite = respostaCerta + numeroAleatorio(-2, 2);
+            if (palpite >= 0 && palpite <= 10) opcoes.add(palpite);
+        }
+        opcoes = embaralhar([...opcoes]);
+
+        const botoes = document.querySelectorAll('.opcoes button');
+        botoes.forEach((btn, i) => {
+            btn.textContent = opcoes[i];
+            btn.classList.remove('certo', 'errado');
+        });
+
+        document.querySelector('#mensagem').textContent = '🐧 Pedro está torcendo por você!';
+    }
+
+    function nomeDaFruta(emoji) {
+        const nomes = {
+            '🍎': 'maçãs', '🍌': 'bananas', '🍊': 'laranjas',
+            '🍇': 'uvinhas', '🍓': 'morangos', '🍉': 'melancias',
+            '🍒': 'cerejinhas', '🍍': 'abacaxis'
+        };
+        return nomes[emoji] || 'frutinhas';
+    }
+
+    function responder(botao) {
+        if (travado) return;
+        const valor = Number(botao.textContent);
+        if (valor === respostaCerta) {
+            travado = true;
+            botao.classList.add('certo');
+            pontos += 1;
+            sequencia += 1;
+            document.querySelector('#mensagem').textContent = ELOGIOS[numeroAleatorio(0, ELOGIOS.length - 1)];
+            falar('Parabéns! Você acertou!');
+            setTimeout(novaContinha, 1500);
+        } else {
+            botao.classList.add('errado');
+            sequencia = 0;
+            document.querySelector('#mensagem').textContent = TENTE[numeroAleatorio(0, TENTE.length - 1)];
+            falar('Tente de novo! Você consegue!');
+        }
+        atualizarPlacar();
+    }
+
+    function atualizarPlacar() {
+        document.querySelector('#pontos').textContent = `⭐ ${pontos} pontos`;
+        document.querySelector('#sequencia').textContent = `🔥 ${sequencia} em seguida!`;
+    }
+
+    // --- Voz (corrige botão OUVIR) ---
+    let vozesDisponiveis = [];
+
+    function carregarVozes() {
+        try {
+            vozesDisponiveis = window.speechSynthesis.getVoices();
+        } catch (e) { /* ignora */ }
+    }
+    if ('speechSynthesis' in window) {
+        carregarVozes();
+        window.speechSynthesis.onvoiceschanged = carregarVozes;
+    }
+
+    function falar(texto) {
+        if (!('speechSynthesis' in window) || !window.speechSynthesis) {
+            document.querySelector('#mensagem').textContent = '🔇 Ops! Seu navegador não tem voz. Peça ajuda para ler! 🐧';
+            return;
+        }
+        try {
+            const synth = window.speechSynthesis;
+            synth.cancel();
+            // No Chrome o cancel() mata a fala seguinte se for imediata,
+            // então damos um respiro + retomamos caso esteja pausado.
+            synth.resume();
+            const voz = new SpeechSynthesisUtterance(texto);
+            voz.lang = 'pt-BR';
+            voz.rate = 0.9;
+            voz.pitch = 1.1;
+            const vozBR = vozesDisponiveis.find(v => v.lang && v.lang.toLowerCase().startsWith('pt'));
+            if (vozBR) {
+                voz.voice = vozBR;
+                voz.lang = vozBR.lang;
+            }
+            voz.onerror = function (event) {
+                // O cancel() da fala anterior dispara erro "canceled"/"interrupted"
+                // na fala antiga mesmo quando a nova está funcionando. Ignora esses.
+                const erro = event && event.error ? event.error : '';
+                if (erro === 'canceled' || erro === 'interrupted') return;
+                document.querySelector('#mensagem').textContent = '🔇 Ops! A voz falhou. Tente de novo! 🐧';
+                restaurarMusica();
+            };
+            // Abaixa a música enquanto o Pedro fala, para a criança ouvir melhor
+            abaixarMusica();
+            voz.onend = restaurarMusica;
+            setTimeout(() => synth.speak(voz), 100);
+        } catch (e) {
+            document.querySelector('#mensagem').textContent = '🔇 Ops! A voz falhou. Tente de novo! 🐧';
+        }
+    }
+
+    function falarPergunta() {
+        const texto = document.querySelector('#pergunta').dataset.texto || document.querySelector('#pergunta').textContent;
+        falar(texto);
+    }
+
+    // --- Música de fundo (YouTube) ---
+    // Vídeo: https://www.youtube.com/watch?v=8JCJbekaAw4
+    const MUSICA_ID = '8JCJbekaAw4';
+    const MUSICA_VOLUME = 50;
+    const MUSICA_VOLUME_BAIXO = 12;
+    let playerMusica = null;
+    let musicaLigada = false;
+    let playerPronto = false;
+    let querTocar = false;
+
+    function abaixarMusica() {
+        try {
+            if (musicaLigada && playerPronto && playerMusica && playerMusica.setVolume) {
+                playerMusica.setVolume(MUSICA_VOLUME_BAIXO);
+            }
+        } catch (e) { /* ignora */ }
+    }
+
+    function restaurarMusica() {
+        try {
+            if (musicaLigada && playerPronto && playerMusica && playerMusica.setVolume) {
+                playerMusica.setVolume(MUSICA_VOLUME);
+            }
+        } catch (e) { /* ignora */ }
+    }
+
+    function atualizarBtnMusica() {
+        const btn = document.querySelector('#btnMusica');
+        if (!btn) return;
+        if (musicaLigada) {
+            btn.classList.add('ligada');
+            btn.textContent = '🎶 MÚSICA: ON 🔊';
+        } else {
+            btn.classList.remove('ligada');
+            btn.textContent = '🎵 MÚSICA: OFF 🔇';
+        }
+    }
+
+    // Chamada automaticamente pela API do YouTube
+    function onYouTubeIframeAPIReady() {
+        playerMusica = new YT.Player('player-musica', {
+            height: '1',
+            width: '1',
+            videoId: MUSICA_ID,
+            playerVars: { autoplay: 0, loop: 1, playlist: MUSICA_ID, rel: 0 },
+            events: {
+                onReady: function () {
+                    playerPronto = true;
+                    try { playerMusica.setVolume(50); } catch (e) { /* ignora */ }
+                    if (querTocar) {
+                        querTocar = false;
+                        playerMusica.playVideo();
+                    }
+                },
+                onStateChange: function (e) {
+                    // Mantém ligada em loop
+                    if (musicaLigada && e.data === YT.PlayerState.ENDED) {
+                        playerMusica.playVideo();
+                    }
+                },
+                onError: function () {
+                    musicaLigada = false;
+                    querTocar = false;
+                    atualizarBtnMusica();
+                    document.querySelector('#mensagem').textContent = '🔇 Ops! A música não carregou. Confira a internet! 🐧';
+                }
+            }
+        });
+    }
+
+    function alternarMusica() {
+        // Primeiro clique já é o gesto que libera o áudio no navegador
+        if (!playerMusica || !playerPronto) {
+            musicaLigada = true;
+            querTocar = true;
+            atualizarBtnMusica();
+            document.querySelector('#mensagem').textContent = '🎶 Carregando a musiquinha... 🐧';
+            // Se a API ainda não carregou, tenta criar o player via iframe direto
+            if (typeof YT === 'undefined' || !YT.Player) {
+                return; // onYouTubeIframeAPIReady cria e toca quando pronto
+            }
+            return;
+        }
+        try {
+            if (musicaLigada) {
+                playerMusica.pauseVideo();
+                musicaLigada = false;
+            } else {
+                playerMusica.playVideo();
+                musicaLigada = true;
+            }
+        } catch (e) {
+            document.querySelector('#mensagem').textContent = '🔇 Ops! A música falhou. Tente de novo! 🐧';
+        }
+        atualizarBtnMusica();
+    }
+
+    novaContinha();
+</script>
+<script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
