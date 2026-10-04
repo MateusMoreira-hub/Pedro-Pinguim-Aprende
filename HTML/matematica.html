@@ -79,6 +79,10 @@
             border-radius: 12px;
             padding: 6px;
         }
+        .pergunta:focus,
+        .continha:focus {
+            outline: none;
+        }
         .opcoes {
             display: flex;
             justify-content: center;
@@ -136,7 +140,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="focarpergunta()">
 <div class="container">
       <img src="/IMAGE/Pedro.png" alt="Pedro Pinguim" class="pedro">
     <div class="cubotitle" onclick="window.location.href='/index.html'">
@@ -164,13 +168,13 @@
             <button id="btnTudo" onclick="escolherTipo('tudo')">🎲 TUDO</button>
         </div>
 
-        <div class="continha">
+        <div class="continha" id="continha" tabindex="-1" role="group" aria-label="Continha com frutinhas">
             <div id="frutas1" class="frutas-linha">🍎🍎🍎</div>
             <div id="sinal" class="sinal">+</div>
             <div id="frutas2" class="frutas-linha">🍎🍎</div>
         </div>
 
-        <p id="pergunta" class="pergunta">Quanto é 3 + 2?</p>
+        <p id="pergunta" class="pergunta" tabindex="-1" aria-live="polite">Quanto é 3 + 2?</p>
 
         <div class="opcoes">
             <button onclick="responder(this)">5</button>
@@ -470,7 +474,23 @@
         atualizarBtnMusica();
     }
 
+    function focarpergunta() {
+        // Leva o foco visual e de leitura para as frutinhas + pergunta
+        const pergunta = document.querySelector('#pergunta');
+        if (!pergunta) return;
+        // Centraliza pergunta (com as frutinhas logo acima) na tela
+        pergunta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Foca a pergunta para leitor de tela/teclado, sem pular o scroll suave
+        try {
+            pergunta.focus({ preventScroll: true });
+        } catch (e) {
+            pergunta.focus();
+        }
+    }
+
     novaContinha();
+    // Garante o foco mesmo se o onload disparar antes do JS estar pronto
+    window.addEventListener('load', () => setTimeout(focarpergunta, 100));
 </script>
 <script src="https://www.youtube.com/iframe_api"></script>
 </body>
