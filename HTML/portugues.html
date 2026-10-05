@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Ranchers&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <title>Matemática com Frutinhas! 🍎</title>
+    <title>Português com Pedro! 🐧📚</title>
     <style>
-        .cubotxt-mat {
+        .cubotxt-port {
             margin: auto;
             margin-top: 100px;
             margin-bottom: 30px;
@@ -47,7 +47,7 @@
         .tipos button {
             width: 100px;
             height: 50px;
-            font-size: 20px;
+            font-size: 18px;
         }
         .tipos button.ativo {
             background-color: rgb(50, 125, 255);
@@ -58,22 +58,40 @@
             border-radius: 15px;
             margin: 12px;
             padding: 10px 5px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
-        .frutas-linha {
-            font-size: 28px;
-            line-height: 1.4;
-            letter-spacing: 2px;
-            word-break: break-word;
+        .emoji-linha {
+            font-size: 60px;
+            line-height: 1.2;
         }
-        .sinal {
+        .palavra-linha {
             font-family: "Ranchers", cursive;
-            font-size: 36px;
+            font-size: 34px;
             color: #ffe45e;
             text-shadow: 2px 2px 2px #1c1c1ce4;
-            margin: 2px 0;
+            letter-spacing: 4px;
+            margin-top: 5px;
+        }
+        .letra-destaque {
+            background-color: #ff5e5e;
+            color: #fff;
+            padding: 0 6px;
+            border-radius: 6px;
+        }
+        .letra-grande {
+            font-family: "Ranchers", cursive;
+            font-size: 110px;
+            color: #ffe45e;
+            text-shadow: 3px 3px 3px #1c1c1ce4;
+            line-height: 1;
         }
         .pergunta {
-            font-size: 30px !important;
+            font-size: 26px !important;
             background-color: rgb(54, 69, 228, 0.5);
             margin: 10px 12px !important;
             border-radius: 12px;
@@ -89,11 +107,16 @@
             gap: 10px;
             flex-wrap: wrap;
             padding: 0 10px;
+            min-height: 60px;
         }
         .opcoes button {
             width: 90px;
             height: 60px;
             font-size: 32px;
+        }
+        .opcoes button.largo {
+            width: 130px;
+            font-size: 20px;
         }
         .opcoes button.certo {
             background-color: #37c837;
@@ -142,87 +165,113 @@
 </head>
 <body onload="focarpergunta()">
 <div class="container">
-      <img src="/IMAGE/Pedro.png" alt="Pedro Pinguim" class="pedro">
+    <img src="/IMAGE/Pedro.png" alt="Pedro Pinguim" class="pedro">
     <div class="cubotitle" onclick="window.location.href='/index.html'">
-        <p>
-            <h1>PEDRO PINGUIM APRENDE</h1>
-        </p>
+        <p><h1>PEDRO PINGUIM APRENDE</h1></p>
     </div>
 </div>
-  <div class="cubotxt-mat">
-        <p style="font-size:23px; background-color: rgb(54, 69, 228,0.5); margin:12px; border-radius:12px; padding:6px;">➕ MATEMÁTICA COM FRUTINHAS 🍎</p>
 
-        <div class="placar">
-            <span id="pontos">⭐ 0 pontos</span>
-            <span id="sequencia">🔥 0 em seguida!</span>
-        </div>
+<div class="cubotxt-port">
+    <p style="font-size:23px; background-color: rgb(54, 69, 228,0.5); margin:12px; border-radius:12px; padding:6px;">📚 PORTUGUÊS COM PEDRO 🐧</p>
 
-        <p class="dica">Escolha a continha, conte as frutinhas e toque na resposta!</p>
-
-        <p><button id="btnMusica" onclick="alternarMusica()">🎵 MÚSICA: OFF 🔇</button></p>
-        <div id="player-musica"></div>
-
-        <div class="tipos">
-            <button style="font-size: 18px;" id="btnSomar" class="ativo" onclick="escolherTipo('somar')">➕ SOMAR</button>
-            <button id="btnTirar" onclick="escolherTipo('tirar')">➖ TIRAR</button>
-            <button id="btnTudo" onclick="escolherTipo('tudo')">🎲 TUDO</button>
-        </div>
-
-        <div class="continha" id="continha" tabindex="-1" role="group" aria-label="Continha com frutinhas">
-            <div id="frutas1" class="frutas-linha">🍎🍎🍎</div>
-            <div id="sinal" class="sinal">+</div>
-            <div id="frutas2" class="frutas-linha">🍎🍎</div>
-        </div>
-
-        <p id="pergunta" class="pergunta" tabindex="-1" aria-live="polite">Quanto é 3 + 2?</p>
-
-        <div class="opcoes">
-            <button onclick="responder(this)">5</button>
-            <button onclick="responder(this)">4</button>
-            <button onclick="responder(this)">6</button>
-        </div>
-
-        <p id="mensagem">🐧 Pedro está torcendo por você!</p>
-
-        <div class="acoes">
-            <p><button onclick="falarPergunta()" style="width: 150px;">🔊 OUVIR 👂</button></p>
-            <p><button onclick="novaContinha()" style="width: 150px;">🎲 NOVA 🍓</button></p>
-        </div>
-        <p><button onclick="window.location.href='materia.html'" style="width: 225px;">⬅️ VOLTAR 📚</button></p>
+    <div class="placar">
+        <span id="pontos">⭐ 0 pontos</span>
+        <span id="sequencia">🔥 0 em seguida!</span>
     </div>
 
+    <p class="dica">Escolha a atividade e toque na resposta certa!</p>
+
+    <p><button id="btnMusica" onclick="alternarMusica()">🎵 MÚSICA: OFF 🔇</button></p>
+    <div id="player-musica"></div>
+
+    <div class="tipos">
+        <button id="btnLetra" class="ativo" onclick="escolherTipo('letra')">🔤 LETRA</button>
+        <button id="btnVogal" onclick="escolherTipo('vogal')">🅰️ VOGAIS</button>
+        <button id="btnTudo" onclick="escolherTipo('tudo')">🎲 TUDO</button>
+    </div>
+
+    <div class="continha" id="continha" tabindex="-1" role="group" aria-label="Atividade de português">
+        <div id="emoji" class="emoji-linha">🍎</div>
+        <div id="palavra" class="palavra-linha">MAÇÃ</div>
+        <div id="letraGrande" class="letra-grande" style="display:none;">A</div>
+    </div>
+
+    <p id="pergunta" class="pergunta" tabindex="-1" aria-live="polite">Com qual letra começa MAÇÃ?</p>
+
+    <div class="opcoes" id="opcoes"></div>
+
+    <p id="mensagem">🐧 Pedro está torcendo por você!</p>
+
+    <div class="acoes">
+        <p><button onclick="falarPergunta()" style="width: 150px;">🔊 OUVIR 👂</button></p>
+        <p><button onclick="novaAtividade()" style="width: 150px;">🎲 NOVA ✨</button></p>
+    </div>
+    <p><button onclick="window.location.href='materia.html'" style="width: 225px;">⬅️ VOLTAR 📚</button></p>
+</div>
+
 <script>
-    let tipo = 'somar';
-    let respostaCerta = 0;
+    let tipo = 'letra';
+    let respostaCerta = '';
     let pontos = 0;
     let sequencia = 0;
     let travado = false;
 
-    const FRUTAS = ['🍎', '🍌', '🍊', '🍇', '🍓', '🍉', '🍒', '🍍'];
+    // Palavras com emoji + palavra + letra inicial (sem acento na 1ª letra)
+    const PALAVRAS = [
+        { emoji: '🍎', palavra: 'MAÇÃ', letra: 'M' },
+        { emoji: '🍌', palavra: 'BANANA', letra: 'B' },
+        { emoji: '🐶', palavra: 'CACHORRO', letra: 'C' },
+        { emoji: '🐱', palavra: 'GATO', letra: 'G' },
+        { emoji: '🐘', palavra: 'ELEFANTE', letra: 'E' },
+        { emoji: '🦁', palavra: 'LEÃO', letra: 'L' },
+        { emoji: '🐟', palavra: 'PEIXE', letra: 'P' },
+        { emoji: '☀️', palavra: 'SOL', letra: 'S' },
+        { emoji: '🌙', palavra: 'LUA', letra: 'L' },
+        { emoji: '⭐', palavra: 'ESTRELA', letra: 'E' },
+        { emoji: '🌸', palavra: 'FLOR', letra: 'F' },
+        { emoji: '🏠', palavra: 'CASA', letra: 'C' },
+        { emoji: '🚗', palavra: 'CARRO', letra: 'C' },
+        { emoji: '⚽', palavra: 'BOLA', letra: 'B' },
+        { emoji: '📚', palavra: 'LIVRO', letra: 'L' },
+        { emoji: '🎈', palavra: 'BALÃO', letra: 'B' },
+        { emoji: '🐸', palavra: 'SAPO', letra: 'S' },
+        { emoji: '🐮', palavra: 'VACA', letra: 'V' },
+        { emoji: '🐷', palavra: 'PORCO', letra: 'P' },
+        { emoji: '🐻', palavra: 'URSO', letra: 'U' },
+        { emoji: '🐜', palavra: 'FORMIGA', letra: 'F' },
+        { emoji: '🍇', palavra: 'UVA', letra: 'U' },
+        { emoji: '🍊', palavra: 'LARANJA', letra: 'L' },
+        { emoji: '🍓', palavra: 'MORANGO', letra: 'M' },
+        { emoji: '🥚', palavra: 'OVO', letra: 'O' },
+        { emoji: '🦆', palavra: 'PATO', letra: 'P' },
+        { emoji: '🐔', palavra: 'GALINHA', letra: 'G' },
+        { emoji: '🐴', palavra: 'CAVALO', letra: 'C' },
+        { emoji: '🐵', palavra: 'MACACO', letra: 'M' },
+        { emoji: '🐝', palavra: 'ABELHA', letra: 'A' },
+        { emoji: '🐢', palavra: 'TARTARUGA', letra: 'T' },
+        { emoji: '🦋', palavra: 'BORBOLETA', letra: 'B' },
+        { emoji: '🎂', palavra: 'BOLO', letra: 'B' },
+        { emoji: '🧸', palavra: 'URSINHO', letra: 'U' }
+    ];
+
+    const VOGAIS = ['A', 'E', 'I', 'O', 'U'];
+    const CONSOANTES = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'V', 'X', 'Z'];
+
     const ELOGIOS = [
         '🎉 MUITO BEM! Você é demais!',
         '🐧 UAU! O Pedro amou!',
         '⭐ INCRÍVEL! Continua assim!',
-        '🍓 DELÍCIA! Você acertou!',
+        '📚 DELÍCIA! Você acertou!',
         '🌈 PERFEITO! Estrela para você!'
     ];
     const TENTE = [
-        '🐧 Quase! Conte de novo com calminha!',
-        '🍌 Opa! Tente contar as frutinhas uma por uma!',
-        '💪 Você consegue! Olhe bem as frutinhas!'
+        '🐧 Quase! Olhe a primeira letra com calminha!',
+        '🔤 Opa! Tente de novo, você consegue!',
+        '💪 Vamos lá! Preste atenção na palavra!'
     ];
 
     function numeroAleatorio(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    function escolherTipo(novoTipo) {
-        tipo = novoTipo;
-        document.querySelectorAll('.tipos button').forEach(b => b.classList.remove('ativo'));
-        if (tipo === 'somar') document.querySelector('#btnSomar').classList.add('ativo');
-        if (tipo === 'tirar') document.querySelector('#btnTirar').classList.add('ativo');
-        if (tipo === 'tudo') document.querySelector('#btnTudo').classList.add('ativo');
-        novaContinha();
     }
 
     function embaralhar(array) {
@@ -233,85 +282,109 @@
         return array;
     }
 
-    function novaContinha() {
-        travado = false;
-        let operacao = tipo;
-        if (tipo === 'tudo') {
-            operacao = Math.random() < 0.5 ? 'somar' : 'tirar';
-        }
-
-        // Números pequenos para a pré-escola (1 a 5, soma até 10)
-        let n1 = numeroAleatorio(1, 5);
-        let n2 = numeroAleatorio(1, 5);
-
-        if (operacao === 'somar') {
-            // Garante soma máxima de 10
-            while (n1 + n2 > 10) {
-                n1 = numeroAleatorio(1, 5);
-                n2 = numeroAleatorio(1, 5);
-            }
-            respostaCerta = n1 + n2;
-            document.querySelector('#sinal').textContent = '+';
-        } else {
-            // Subtração sem resultado negativo: o maior fica em cima
-            if (n2 > n1) [n1, n2] = [n2, n1];
-            respostaCerta = n1 - n2;
-            document.querySelector('#sinal').textContent = '−';
-        }
-
-        const fruta = FRUTAS[numeroAleatorio(0, FRUTAS.length - 1)];
-        const nomeFruta = nomeDaFruta(fruta);
-
-        document.querySelector('#frutas1').textContent = fruta.repeat(n1);
-        document.querySelector('#frutas2').textContent = fruta.repeat(Math.max(n2, n2 === 0 ? 0 : n2));
-
-        const simbolo = document.querySelector('#sinal').textContent;
-        document.querySelector('#pergunta').textContent = `Quanto é ${n1} ${simbolo} ${n2}? (${n1} ${nomeFruta} ${simbolo === '+' ? 'mais' : 'menos'} ${n2})`;
-
-        // Guarda para o botão de ouvir
-        document.querySelector('#pergunta').dataset.texto = `Quanto é ${n1} ${simbolo === '+' ? 'mais' : 'menos'} ${n2}? Conte as frutinhas!`;
-
-        // Monta 3 opções: a certa + 2 erradas próximas
-        let opcoes = new Set([respostaCerta]);
-        while (opcoes.size < 3) {
-            let palpite = respostaCerta + numeroAleatorio(-2, 2);
-            if (palpite >= 0 && palpite <= 10) opcoes.add(palpite);
-        }
-        opcoes = embaralhar([...opcoes]);
-
-        const botoes = document.querySelectorAll('.opcoes button');
-        botoes.forEach((btn, i) => {
-            btn.textContent = opcoes[i];
-            btn.classList.remove('certo', 'errado');
-        });
-
-        document.querySelector('#mensagem').textContent = '🐧 Pedro está torcendo por você!';
+    function escolherTipo(novoTipo) {
+        tipo = novoTipo;
+        document.querySelectorAll('.tipos button').forEach(b => b.classList.remove('ativo'));
+        if (tipo === 'letra') document.querySelector('#btnLetra').classList.add('ativo');
+        if (tipo === 'vogal') document.querySelector('#btnVogal').classList.add('ativo');
+        if (tipo === 'tudo') document.querySelector('#btnTudo').classList.add('ativo');
+        novaAtividade();
     }
 
-    function nomeDaFruta(emoji) {
-        const nomes = {
-            '🍎': 'maçãs', '🍌': 'bananas', '🍊': 'laranjas',
-            '🍇': 'uvinhas', '🍓': 'morangos', '🍉': 'melancias',
-            '🍒': 'cerejinhas', '🍍': 'abacaxis'
-        };
-        return nomes[emoji] || 'frutinhas';
+    function novaAtividade() {
+        travado = false;
+        let atividade = tipo;
+        if (tipo === 'tudo') {
+            atividade = Math.random() < 0.6 ? 'letra' : 'vogal';
+        }
+        if (atividade === 'letra') {
+            mostrarLetra();
+        } else {
+            mostrarVogal();
+        }
+    }
+
+    function mostrarLetra() {
+        const item = PALAVRAS[numeroAleatorio(0, PALAVRAS.length - 1)];
+        respostaCerta = item.letra;
+
+        // Mostra emoji + palavra
+        document.querySelector('#emoji').style.display = 'block';
+        document.querySelector('#palavra').style.display = 'block';
+        document.querySelector('#letraGrande').style.display = 'none';
+
+        document.querySelector('#emoji').textContent = item.emoji;
+        const primeira = item.palavra.charAt(0);
+        const resto = item.palavra.slice(1);
+        document.querySelector('#palavra').innerHTML =
+            `<span class="letra-destaque">${primeira}</span>${resto}`;
+
+        // Pergunta
+        document.querySelector('#pergunta').textContent = `Com qual letra começa ${item.palavra}?`;
+        document.querySelector('#pergunta').dataset.texto =
+            `Com qual letra começa a palavra ${item.palavra}?`;
+
+        // Opções: 1 certa + 2 erradas
+        const alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let opcoes = new Set([item.letra]);
+        while (opcoes.size < 3) {
+            opcoes.add(alfabeto[numeroAleatorio(0, alfabeto.length - 1)]);
+        }
+        opcoes = embaralhar([...opcoes]);
+        criarBotoes(opcoes, false);
+    }
+
+    function mostrarVogal() {
+        const ehVogal = Math.random() < 0.5;
+        const letra = ehVogal
+            ? VOGAIS[numeroAleatorio(0, VOGAIS.length - 1)]
+            : CONSOANTES[numeroAleatorio(0, CONSOANTES.length - 1)];
+
+        respostaCerta = ehVogal ? 'VOGAL' : 'CONSOANTE';
+
+        // Mostra só a letra grande
+        document.querySelector('#emoji').style.display = 'none';
+        document.querySelector('#palavra').style.display = 'none';
+        document.querySelector('#letraGrande').style.display = 'block';
+        document.querySelector('#letraGrande').textContent = letra;
+
+        // Pergunta
+        document.querySelector('#pergunta').textContent = `A letra ${letra} é...`;
+        document.querySelector('#pergunta').dataset.texto =
+            `A letra ${letra} é uma vogal ou uma consoante?`;
+
+        criarBotoes(['VOGAL', 'CONSOANTE'], true);
+    }
+
+    function criarBotoes(opcoes, largo) {
+        const container = document.querySelector('#opcoes');
+        container.innerHTML = '';
+        opcoes.forEach(op => {
+            const btn = document.createElement('button');
+            btn.textContent = op;
+            if (largo) btn.classList.add('largo');
+            btn.onclick = function () { responder(this); };
+            container.appendChild(btn);
+        });
     }
 
     function responder(botao) {
         if (travado) return;
-        const valor = Number(botao.textContent);
+        const valor = botao.textContent.trim();
         if (valor === respostaCerta) {
             travado = true;
             botao.classList.add('certo');
             pontos += 1;
             sequencia += 1;
-            document.querySelector('#mensagem').textContent = ELOGIOS[numeroAleatorio(0, ELOGIOS.length - 1)];
+            document.querySelector('#mensagem').textContent =
+                ELOGIOS[numeroAleatorio(0, ELOGIOS.length - 1)];
             falar('Parabéns! Você acertou!');
-            setTimeout(novaContinha, 1500);
+            setTimeout(novaAtividade, 1800);
         } else {
             botao.classList.add('errado');
             sequencia = 0;
-            document.querySelector('#mensagem').textContent = TENTE[numeroAleatorio(0, TENTE.length - 1)];
+            document.querySelector('#mensagem').textContent =
+                TENTE[numeroAleatorio(0, TENTE.length - 1)];
             falar('Tente de novo! Você consegue!');
         }
         atualizarPlacar();
@@ -322,7 +395,7 @@
         document.querySelector('#sequencia').textContent = `🔥 ${sequencia} em seguida!`;
     }
 
-    // --- Voz (corrige botão OUVIR) ---
+    // --- Voz ---
     let vozesDisponiveis = [];
 
     function carregarVozes() {
@@ -342,8 +415,6 @@
         try {
             const synth = window.speechSynthesis;
             synth.cancel();
-            // No Chrome o cancel() mata a fala seguinte se for imediata,
-            // então damos um respiro + retomamos caso esteja pausado.
             synth.resume();
             const voz = new SpeechSynthesisUtterance(texto);
             voz.lang = 'pt-BR';
@@ -355,13 +426,10 @@
                 voz.lang = vozBR.lang;
             }
             voz.onerror = function (event) {
-                // O cancel() da fala anterior dispara erro "canceled"/"interrupted"
-                // na fala antiga mesmo quando a nova está funcionando. Ignora esses.
                 const erro = event && event.error ? event.error : '';
                 if (erro === 'canceled' || erro === 'interrupted') return;
                 restaurarMusica();
             };
-            // Abaixa a música enquanto o Pedro fala, para a criança ouvir melhor
             abaixarMusica();
             voz.onend = restaurarMusica;
             setTimeout(() => synth.speak(voz), 100);
@@ -371,12 +439,12 @@
     }
 
     function falarPergunta() {
-        const texto = document.querySelector('#pergunta').dataset.texto || document.querySelector('#pergunta').textContent;
+        const el = document.querySelector('#pergunta');
+        const texto = el.dataset.texto || el.textContent;
         falar(texto);
     }
 
     // --- Música de fundo (YouTube) ---
-    // Vídeo: https://www.youtube.com/watch?v=8JCJbekaAw4
     const MUSICA_ID = '8JCJbekaAw4';
     const MUSICA_VOLUME = 50;
     const MUSICA_VOLUME_BAIXO = 12;
@@ -413,7 +481,6 @@
         }
     }
 
-    // Chamada automaticamente pela API do YouTube
     function onYouTubeIframeAPIReady() {
         playerMusica = new YT.Player('player-musica', {
             height: '1',
@@ -423,14 +490,13 @@
             events: {
                 onReady: function () {
                     playerPronto = true;
-                    try { playerMusica.setVolume(50); } catch (e) { /* ignora */ }
+                    try { playerMusica.setVolume(MUSICA_VOLUME); } catch (e) { /* ignora */ }
                     if (querTocar) {
                         querTocar = false;
                         playerMusica.playVideo();
                     }
                 },
                 onStateChange: function (e) {
-                    // Mantém ligada em loop
                     if (musicaLigada && e.data === YT.PlayerState.ENDED) {
                         playerMusica.playVideo();
                     }
@@ -439,23 +505,20 @@
                     musicaLigada = false;
                     querTocar = false;
                     atualizarBtnMusica();
-                    document.querySelector('#mensagem').textContent = '🔇 Ops! A música não carregou. Confira a internet! 🐧';
+                    document.querySelector('#mensagem').textContent =
+                        '🔇 Ops! A música não carregou. Confira a internet! 🐧';
                 }
             }
         });
     }
 
     function alternarMusica() {
-        // Primeiro clique já é o gesto que libera o áudio no navegador
         if (!playerMusica || !playerPronto) {
             musicaLigada = true;
             querTocar = true;
             atualizarBtnMusica();
             document.querySelector('#mensagem').textContent = '🎶 Carregando a musiquinha... 🐧';
-            // Se a API ainda não carregou, tenta criar o player via iframe direto
-            if (typeof YT === 'undefined' || !YT.Player) {
-                return; // onYouTubeIframeAPIReady cria e toca quando pronto
-            }
+            if (typeof YT === 'undefined' || !YT.Player) return;
             return;
         }
         try {
@@ -467,18 +530,16 @@
                 musicaLigada = true;
             }
         } catch (e) {
-            document.querySelector('#mensagem').textContent = '🔇 Ops! A música falhou. Tente de novo! 🐧';
+            document.querySelector('#mensagem').textContent =
+                '🔇 Ops! A música falhou. Tente de novo! 🐧';
         }
         atualizarBtnMusica();
     }
 
     function focarpergunta() {
-        // Leva o foco visual e de leitura para as frutinhas + pergunta
         const pergunta = document.querySelector('#pergunta');
         if (!pergunta) return;
-        // Centraliza pergunta (com as frutinhas logo acima) na tela
         pergunta.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        // Foca a pergunta para leitor de tela/teclado, sem pular o scroll suave
         try {
             pergunta.focus({ preventScroll: true });
         } catch (e) {
@@ -486,8 +547,8 @@
         }
     }
 
-    novaContinha();
-    // Garante o foco mesmo se o onload disparar antes do JS estar pronto
+    // Inicializa
+    novaAtividade();
     window.addEventListener('load', () => setTimeout(focarpergunta, 100));
 </script>
 <script src="https://www.youtube.com/iframe_api"></script>
