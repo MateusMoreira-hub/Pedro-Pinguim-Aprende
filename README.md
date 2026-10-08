@@ -50,6 +50,8 @@ Objetivos específicos:
 
 Na página inicial o Pedro Pinguim dá as boas-vindas e a criança toca em "Aprender". Na tela seguinte ela escolhe entre português e matemática. Depois disso vêm as atividades: uma pergunta com três opções de resposta, e a criança toca na que acha certa. Dá para voltar à escolha da matéria pelo botão "Voltar" ou ir para a página inicial tocando no título.
 
+<img src="IMAGE/DemoInicio.jpg" alt="Demonstração da Tela Inicial" width="400">
+
 ## Funcionalidades do MVP
 
 Português:
