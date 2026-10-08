@@ -48,17 +48,21 @@ Objetivos específicos:
 
 ## Como funciona
 
+<img src="IMAGE/DemoInicio.jpg" alt="Demonstração da Tela Inicial" width="400"> <img src="IMAGE/DemoMateria.jpg" alt="Demonstração da Tela Inicial" width="400">
+
 Na página inicial o Pedro Pinguim dá as boas-vindas e a criança toca em "Aprender". Na tela seguinte ela escolhe entre português e matemática. Depois disso vêm as atividades: uma pergunta com três opções de resposta, e a criança toca na que acha certa. Dá para voltar à escolha da matéria pelo botão "Voltar" ou ir para a página inicial tocando no título.
 
-<img src="IMAGE/DemoInicio.jpg" alt="Demonstração da Tela Inicial" width="400">
-
 ## Funcionalidades do MVP
+
+<img src="IMAGE/DemoPortugues1.jpg" alt="Demonstração da Tela Inicial" width="400"> <img src="IMAGE/DemoPortugues2.jpg" alt="Demonstração da Tela Inicial" width="400">
 
 Português:
 
 - primeira letra: aparece um emoji com uma palavra (por exemplo, 🍎 MAÇÃ) e a criança escolhe com qual letra ela começa;
 - vogais e consoantes: a criança diz se a letra mostrada é vogal ou consoante;
 - três modos: letras, vogais e "Tudo", que mistura os dois.
+
+<img src="IMAGE/DemoMatematica1.jpg" alt="Demonstração da Tela Inicial" width="400"> <img src="IMAGE/DemoMatematica2.jpg" alt="Demonstração da Tela Inicial" width="400">
 
 Matemática:
 
